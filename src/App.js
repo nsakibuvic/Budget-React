@@ -1,100 +1,29 @@
-import {Container, Button, Header, Segment, Grid, Statistic, Icon, Form} from "semantic-ui-react"
+import {Container, Segment} from "semantic-ui-react"
 import './App.css';
+import MainStatistics from "./components/MainStatistics"
+import MainHeader from "./components/MainHeader";
+import NewEntryForm from "./components/NewEntryForm";
+import MainGridColumn from "./components/MainGridColumn"
+import DisplayBalances from "./components/DisplayBalances";
 
 function App() {
   return (
     <Container>
-      <Header as="h1"> Budget </Header>
-      <Statistic size= "small">
-       <Statistic.Label> Your Balance </Statistic.Label>
-       <Statistic.Value>2,550.53</Statistic.Value>
-       </Statistic>
+     <MainHeader title= "Budget" type= "h1"/>     
+       <MainStatistics size = "small" title = "Your Balance" value = "2550.53"/>
         <Segment textAlign = "center">
-        <Grid columns={2} divided>        
-         <Grid.Row>
-         <Grid.Column>
-           <Statistic size= "tiny" color = "green">
-             <Statistic.Label style = {{textAlign: "left"}}> Income </Statistic.Label>
-             <Statistic.Value>1045</Statistic.Value>
-           </Statistic>
-         </Grid.Column>          
-          <Grid.Column>
-
-          <Statistic size= "tiny" color = "red">
-             <Statistic.Label style = {{textAlign: "right"}}> Expenses </Statistic.Label>
-             <Statistic.Value>250</Statistic.Value>
-           </Statistic>
-          </Grid.Column>
-         </Grid.Row>
-        </Grid>
+         <DisplayBalances />
         </Segment>
+
+        <MainHeader      title= "History" type= "h3" />  
+        <MainGridColumn  description= "income" value= "10" />     
+        <MainGridColumn  description= "expense" value= "20" isExpense />        
+        <MainGridColumn  description= "income" value= "30" />
       
-        <Header as="h3"> History </Header>
-        <Segment color  = "red">
-           <Grid columns ={3}>
-            <Grid.Row>
-         <Grid.Column textAlign = "left" width = {10}>Something</Grid.Column>
-         <Grid.Column textAlign = "right" width = {3}>$10.00</Grid.Column>
-         <Grid.Column textAlign = "" width = {3}>
-         <Icon name= "edit" bordered/>
-         <Icon name= "trash" bordered/>
-         </Grid.Column>
-         </Grid.Row>                     
-           </Grid>
-        </Segment>
-
-        <Segment color  = "green">
-           <Grid columns ={3}>
-            <Grid.Row>
-         <Grid.Column textAlign = "left" width = {10}>Something else</Grid.Column>
-         <Grid.Column textAlign = "right" width = {3}>$20.00</Grid.Column>
-         <Grid.Column textAlign = "" width = {3}>
-         <Icon name= "edit" bordered/>
-         <Icon name= "trash" bordered/>
-         </Grid.Column>
-         </Grid.Row>                     
-           </Grid>
-        </Segment>
-
-        <Segment color  = "red">
-           <Grid columns ={3}>
-            <Grid.Row>
-         <Grid.Column textAlign = "left" width = {10}>Something</Grid.Column>
-         <Grid.Column textAlign = "right" width = {3}>$30.00</Grid.Column>
-         <Grid.Column textAlign = "" width = {3}>
-         <Icon name= "edit" bordered/>
-         <Icon name= "trash" bordered/>
-         </Grid.Column>
-         </Grid.Row>                     
-           </Grid>
-        </Segment>
-        <Header as="h3"> Add New Transaction </Header>
-        <Form unstackable>
-        <Form.Group>
-
-        <Form.Input 
-        icon = "tags" 
-        width= {12} 
-        placeholder= "New Shiny Thing" 
-        label = "Description "
-        />
-        <Form.Input 
-        icon = "dollar" 
-        iconPosition= "left"
-        width= {4} 
-        placeholder= "100.00" 
-        label = "Value "
-        />
-        </Form.Group>
-
-        <Button.Group style = {{ marginTop: 20}}>
-        <Button> Cancel </Button>
-        <Button.Or/>
-        <Button primary> Ok </Button>
-        </Button.Group>
-        </Form>
-
-
+        <MainHeader title= "Add New Transaction" type ="h3"/>
+        <MainGridColumn number= "3" description= "expense" value= "40" isExpense />
+        
+       <NewEntryForm />
     </Container>
   );
 }
