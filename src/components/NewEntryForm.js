@@ -1,26 +1,27 @@
-import React from 'react';
-import Button from "./ButtonServeOrCancel"
-import {Form} from 'semantic-ui-react'
+import { React } from 'react';
+import { Form } from 'semantic-ui-react';
 
-function NewEntryForm(){
-return(
+import Button from './ButtonServeOrCancel';
+import EntryForm from './EntryForm';
+
+function NewEntryForm({addEntry, description, value, isExpense, setDescription, setValue, setIsExpense}){
+
+
+
+return(    
     <Form unstackable>
-    <Form.Group>
-    <Form.Input 
-    icon = "tags" 
-    width= {12} 
-    placeholder= "New Shiny Thing" 
-    label = "Description "
-    />
-    <Form.Input 
-    icon = "dollar" 
-    iconPosition= "left"
-    width= {4} 
-    placeholder= "100.00" 
-    label = "Value "
-    />
-    </Form.Group>
-    <Button />        
+    
+    <EntryForm 
+    description= {description} 
+    value = {value} 
+    isExpense = {isExpense}
+    setDescription = {setDescription} 
+    setValue = {setValue}
+    setIsExpense = {setIsExpense}
+    /> 
+    <Button 
+    addEntry= {addEntry}      
+    />        
     </Form>
 )
 }
